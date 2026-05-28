@@ -11,9 +11,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#1a1a1a;color:#fff;font-family:'Roboto Condensed',sans-serif;min-height:100vh}
-:root{--black:#000;--dark:#111;--mid:#222;--accent:#fff;--gray:#888;--red:#e50914}
 
-/* HEADER */
 .header{background:#000;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;position:sticky;top:0;z-index:100}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:#fff;cursor:pointer;user-select:none}
 .header-right{display:flex;align-items:center;gap:12px}
@@ -21,62 +19,50 @@ body{background:#1a1a1a;color:#fff;font-family:'Roboto Condensed',sans-serif;min
 .search-wrap input{border:none;outline:none;padding:0 10px;font-size:14px;width:240px;font-family:'Roboto Condensed',sans-serif;background:#fff;color:#000}
 .search-icon{padding:0 8px;cursor:pointer;color:#000;font-size:16px;background:#fff;border:none;height:100%}
 .search-clear{padding:0 8px;cursor:pointer;color:#666;font-size:18px;background:#fff;border:none;height:100%;line-height:1}
-.avatar-btn{width:42px;height:42px;border-radius:50%;background:#333;border:2px solid #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden}
-.avatar-btn img{width:100%;height:100%;object-fit:cover}
+.avatar-btn{width:42px;height:42px;border-radius:50%;background:#333;border:2px solid #fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px}
 
-/* NAV */
 .nav{background:#000;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #333}
 .nav-item{padding:14px 0;text-align:center;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:#bbb;transition:color .2s;border-right:1px solid #333;user-select:none}
 .nav-item:last-child{border-right:none}
 .nav-item.active{color:#fff;border-bottom:3px solid #fff}
 .nav-item:hover{color:#fff}
 
-/* MAIN */
 .page{padding:24px;max-width:1200px;margin:0 auto}
 
-/* HOME */
+.loading{display:flex;align-items:center;justify-content:center;height:300px;font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#555}
+.loading::after{content:'';animation:dots 1.2s infinite}
+@keyframes dots{0%{content:''}33%{content:'.'}66%{content:'..'}100%{content:'...'}}
+
 .home-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:16px;color:#fff}
 .genre-block{margin-bottom:24px}
 .genre-label{background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:5px 10px;text-align:center;margin-bottom:10px}
 .genre-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .movie-thumb{cursor:pointer;text-align:center}
-.movie-thumb img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .2s}
-.movie-thumb:hover img{transform:scale(1.04)}
+.movie-thumb img,.movie-thumb .poster-ph{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .2s}
+.movie-thumb:hover img,.movie-thumb:hover .poster-ph{transform:scale(1.04)}
 .movie-thumb .mtitle{font-size:11px;font-weight:700;text-transform:uppercase;margin-top:4px;line-height:1.3}
 .movie-thumb .myear{font-size:10px;color:#aaa;text-transform:uppercase}
+.poster-ph{background:linear-gradient(135deg,#2a2a2a,#111);display:flex;align-items:center;justify-content:center;font-size:10px;color:#555;text-align:center;padding:8px;line-height:1.3;font-weight:700;text-transform:uppercase}
 
-/* POPULAR column */
-.popular-col .movie-thumb{margin-bottom:16px}
-.popular-col .movie-thumb img{aspect-ratio:2/3}
-
-/* RELEASES column */
 .release-month{font-family:'Bebas Neue',sans-serif;background:#000;color:#fff;padding:6px 10px;text-align:center;margin-bottom:10px;font-size:14px;letter-spacing:2px}
 .release-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
 .release-item .rdate{font-size:10px;color:#aaa;margin-top:3px;text-align:center}
 
-/* FILMS PAGE */
 .films-layout{display:grid;grid-template-columns:200px 1fr;gap:24px}
-.filters{background:#1a1a1a}
 .filters h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:20px}
 .filter-group{margin-bottom:16px}
 .filter-group label{font-size:12px;font-weight:700;letter-spacing:1px;display:block;margin-bottom:6px}
-.filter-select-wrap{display:flex;align-items:center;gap:4px}
-.filter-select{background:#2a2a2a;border:1px solid #444;color:#fff;padding:6px 8px;font-family:'Roboto Condensed',sans-serif;font-size:13px;flex:1;cursor:pointer;appearance:none}
+.filter-select{width:100%;background:#2a2a2a;border:1px solid #444;color:#fff;padding:7px 8px;font-family:'Roboto Condensed',sans-serif;font-size:13px;cursor:pointer;appearance:none}
 .filter-select option{background:#2a2a2a}
-.filter-btn{background:#333;border:none;color:#fff;padding:6px 8px;cursor:pointer;font-size:13px}
-.filter-dropdown{background:#2a2a2a;border:1px solid #444;margin-top:2px;max-height:160px;overflow-y:auto}
-.filter-dropdown .fd-item{padding:6px 10px;cursor:pointer;font-size:13px}
-.filter-dropdown .fd-item:hover,.filter-dropdown .fd-item.sel{background:#444}
 
 .movies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .movie-card{cursor:pointer;background:#111}
-.movie-card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .2s}
-.movie-card:hover img{transform:scale(1.03)}
+.movie-card img,.movie-card .poster-ph{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .2s}
+.movie-card:hover img,.movie-card:hover .poster-ph{transform:scale(1.03)}
 .movie-card .mc-title{font-size:13px;font-weight:700;text-transform:uppercase;padding:8px 8px 2px;line-height:1.3}
 .movie-card .mc-meta{font-size:11px;color:#aaa;padding:0 8px 8px;text-transform:uppercase}
 
-/* INFO PAGE */
 .info-banner{background:linear-gradient(135deg,#111 0%,#2a2a2a 100%);padding:60px 40px;text-align:center;min-height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .info-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .info-inner{position:relative;z-index:1;max-width:700px}
@@ -87,7 +73,6 @@ body{background:#1a1a1a;color:#fff;font-family:'Roboto Condensed',sans-serif;min
 .info-device{background:#000;border:2px solid #333;padding:20px 30px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;min-width:150px}
 .info-device .dev-icon{font-size:40px;margin-bottom:8px}
 
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;display:flex;align-items:center;justify-content:center}
 .modal{background:#f5f5f5;color:#000;width:540px;max-width:95vw;padding:40px;position:relative;border-radius:2px}
 .modal h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;text-align:center;margin-bottom:30px}
@@ -95,55 +80,74 @@ body{background:#1a1a1a;color:#fff;font-family:'Roboto Condensed',sans-serif;min
 .modal-label{font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:6px}
 .modal-input{width:100%;border:2px solid #ccc;padding:12px 14px;font-size:14px;font-family:'Roboto Condensed',sans-serif;margin-bottom:16px;outline:none;background:#fff}
 .modal-input:focus{border-color:#000}
-.modal-submit{width:100%;background:#000;color:#fff;border:none;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;cursor:pointer;transition:background .2s}
+.modal-submit{width:100%;background:#000;color:#fff;border:none;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;cursor:pointer;transition:background .2s;margin-bottom:4px}
 .modal-submit:hover{background:#333}
 .modal-error{color:red;font-size:12px;margin-bottom:10px;text-align:center}
 .modal-switch{text-align:center;margin-top:14px;font-size:13px}
 .modal-switch span{cursor:pointer;text-decoration:underline;font-weight:700}
-.modal-welcome{text-align:center;padding:10px 0;font-size:14px;color:#333}
 
-/* MOVIE DETAIL */
 .movie-detail{max-width:900px;margin:0 auto;padding:30px 24px}
 .md-top{display:flex;gap:30px;margin-bottom:30px}
 .md-poster{width:220px;flex-shrink:0}
-.md-poster img{width:100%;display:block}
-.md-info{flex:1}
+.md-poster img,.md-poster .poster-ph{width:100%;display:block;aspect-ratio:2/3;object-fit:cover}
 .md-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;line-height:1.1;margin-bottom:8px}
 .md-meta{color:#aaa;font-size:14px;margin-bottom:16px;text-transform:uppercase}
 .md-badge{display:inline-block;background:#222;border:1px solid #444;padding:3px 10px;font-size:12px;margin-right:6px;margin-bottom:8px;text-transform:uppercase}
 .md-desc{font-size:15px;line-height:1.7;color:#ccc;margin-top:12px}
 .md-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-.btn-fav{background:#fff;color:#000;border:none;padding:10px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:background .2s}
+.btn-fav{background:#fff;color:#000;border:none;padding:10px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer}
 .btn-fav:hover{background:#ddd}
 .btn-fav.active{background:#e50914;color:#fff}
-.btn-back{background:transparent;color:#fff;border:2px solid #fff;padding:10px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:all .2s}
+.btn-back{background:transparent;color:#fff;border:2px solid #fff;padding:10px 22px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer}
 .btn-back:hover{background:#fff;color:#000}
 
-/* PROFILE */
 .profile-page{max-width:700px;margin:0 auto;padding:30px 24px}
 .profile-page h1{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;margin-bottom:20px}
 .profile-info{background:#111;padding:20px;margin-bottom:20px;border:1px solid #333}
 .profile-info p{margin-bottom:8px;font-size:14px}
-.profile-info strong{color:#fff}
 .fav-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-.logout-btn{background:transparent;color:#fff;border:2px solid #fff;padding:10px 24px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;transition:all .2s;margin-top:10px}
+.fav-section-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:16px}
+.logout-btn{background:transparent;color:#fff;border:2px solid #fff;padding:10px 24px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;margin-top:10px}
 .logout-btn:hover{background:#fff;color:#000}
 
-/* FOOTER */
-.footer{background:#000;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:40px;border-top:1px solid #222}
-.footer-social{display:flex;align-items:center;gap:4px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px}
-.social-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;margin-left:6px;cursor:pointer}
-.footer-copy{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:#888}
-.footer-contact{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:#aaa;cursor:pointer}
-.footer-contact:hover{color:#fff}
-
-/* SEARCH RESULTS */
 .search-results{padding:24px;max-width:1200px;margin:0 auto}
 .search-results h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:20px}
 .no-results{text-align:center;color:#666;font-size:18px;padding:60px 0;font-family:'Bebas Neue',sans-serif;letter-spacing:2px}
 
-/* Placeholder poster */
-.poster-placeholder{width:100%;aspect-ratio:2/3;background:linear-gradient(135deg,#2a2a2a,#111);display:flex;align-items:center;justify-content:center;font-size:11px;color:#555;text-align:center;padding:8px;line-height:1.3;font-weight:700;text-transform:uppercase}
+.footer{background:#000;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:40px;border-top:1px solid #222}
+.footer-social{display:flex;align-items:center;gap:4px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px}
+.social-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;margin-left:6px}
+.footer-copy{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:#888}
+.footer-contact{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:#aaa;cursor:pointer}
+.footer-contact:hover{color:#fff}
+
+/* ADMIN */
+.admin-page{max-width:1000px;margin:0 auto;padding:30px 24px}
+.admin-page h1{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:3px;margin-bottom:24px}
+.admin-form{background:#111;border:1px solid #333;padding:24px;margin-bottom:32px}
+.admin-form h2{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:18px}
+.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.admin-input{width:100%;background:#222;border:1px solid #444;color:#fff;padding:9px 12px;font-family:'Roboto Condensed',sans-serif;font-size:14px;outline:none}
+.admin-input:focus{border-color:#fff}
+.admin-select{width:100%;background:#222;border:1px solid #444;color:#fff;padding:9px 12px;font-family:'Roboto Condensed',sans-serif;font-size:14px;appearance:none}
+.admin-textarea{width:100%;background:#222;border:1px solid #444;color:#fff;padding:9px 12px;font-family:'Roboto Condensed',sans-serif;font-size:14px;resize:vertical;min-height:80px;margin-bottom:12px;outline:none}
+.admin-textarea:focus{border-color:#fff}
+.admin-btn{background:#fff;color:#000;border:none;padding:10px 24px;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;cursor:pointer;margin-right:10px}
+.admin-btn:hover{background:#ccc}
+.admin-btn.danger{background:#e50914;color:#fff}
+.admin-btn.danger:hover{background:#c00}
+.admin-btn.secondary{background:#333;color:#fff}
+.admin-btn.secondary:hover{background:#555}
+.admin-table{width:100%;border-collapse:collapse;font-size:13px}
+.admin-table th{background:#000;color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:1px;padding:10px 8px;text-align:left;border-bottom:2px solid #333}
+.admin-table td{padding:8px;border-bottom:1px solid #222;vertical-align:middle}
+.admin-table tr:hover td{background:#1a1a1a}
+.admin-table .poster-mini{width:36px;height:54px;object-fit:cover;display:block}
+.admin-table .poster-mini-ph{width:36px;height:54px;background:#222;display:flex;align-items:center;justify-content:center;font-size:8px;color:#555;text-align:center}
+.admin-success{color:#4caf50;font-size:13px;margin-top:8px;font-weight:700}
+.admin-tab-row{display:flex;gap:0;margin-bottom:24px;border-bottom:2px solid #333}
+.admin-tab{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;padding:10px 24px;cursor:pointer;color:#666;border-bottom:3px solid transparent;margin-bottom:-2px}
+.admin-tab.active{color:#fff;border-bottom:3px solid #fff}
 
 @media(max-width:768px){
 .home-grid{grid-template-columns:1fr}
@@ -152,94 +156,81 @@ body{background:#1a1a1a;color:#fff;font-family:'Roboto Condensed',sans-serif;min
 .md-top{flex-direction:column}
 .md-poster{width:100%;max-width:260px}
 .fav-grid{grid-template-columns:repeat(3,1fr)}
+.admin-row{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const {useState,useEffect,useCallback}=React;
+const {useState,useEffect,useCallback,useMemo}=React;
 
-// ── DATA ──────────────────────────────────────────────────────────────────────
-const MOVIES=[
-  {id:1,title:"Дюна: Часть Третья",year:2026,genre:"Боевик",country:"США",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BMDliOTIzNDctMDhmMC00YjIyLWE4MzMtMGM1ZGE1NTMxYzRjXkEyXkFqcGc@._V1_.jpg",
-   desc:"Продолжение эпической саги о Поле Атрейдесе и его пути к власти на планете Арракис."},
-  {id:2,title:"Мстители: Доктор Дум",year:2026,genre:"Боевик",country:"США",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BMDI4ZGZiZDAtMTI4Yi00YmQ1LWI4YzMtOTk4NGRhMDczMzk3XkEyXkFqcGc@._V1_.jpg",
-   desc:"Могущественный Доктор Дум бросает вызов Мстителям и угрожает существованию всей вселенной."},
-  {id:3,title:"Ёлки 13",year:2026,genre:"Комедия",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BMGZiMDEwMjgtZmNlNy00NmNkLTg5ZjAtYzRlNGZhMmE5ZTJhXkEyXkFqcGc@._V1_.jpg",
-   desc:"Тринадцатая часть любимой новогодней комедии с новыми персонажами и неожиданными встречами."},
-  {id:4,title:"Ночная тишина",year:2026,genre:"Комедия",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BOWY3YmNkZDYtODkxNS00MjgzLTgyYzctMmNmMWRmYzZlMDVhXkEyXkFqcGc@._V1_.jpg",
-   desc:"Комедийная история о том, как тихая ночь превращается в череду невероятных событий."},
-  {id:5,title:"Легенды наших предков",year:2025,genre:"Фэнтзи",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BZjY2YTkwZDgtMWM2MC00YTlhLTk0NmItYzJjZDlhMDlmOGE4XkEyXkFqcGc@._V1_.jpg",
-   desc:"Молодая героиня отправляется в магическое путешествие по землям, населённым духами предков."},
-  {id:6,title:"Кейпоп-охотницы на демонов",year:2025,genre:"Боевик",country:"Корея",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BMTQ5NjM3ZTMtZGM5OC00YzFjLWI4NzYtYzM4YzIzMjVlMTBmXkEyXkFqcGc@._V1_.jpg",
-   desc:"Группа K-pop артисток тайно является охотниками на демонов, защищающими мир от тёмных сил."},
-  {id:7,title:"Рай под ногами матерей",year:2024,genre:"Драма",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BZWVkMGU0YjMtYzk5YS00NDk2LThkMjAtMjY3YzI1NjI4ZjRkXkEyXkFqcGc@._V1_.jpg",
-   desc:"Трогательная история о материнской любви и жертвенности на фоне современной России."},
-  {id:8,title:"Казнить нельзя помиловать",year:2026,genre:"Триллер",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BZjI2MzIzZDgtYWVhNy00MzI1LTk3NTgtNjU5NTFhNjU2NzIwXkEyXkFqcGc@._V1_.jpg",
-   desc:"Судьба человека зависит от одного знака препинания. Юридический триллер о несправедливости системы."},
-  {id:9,title:"Домовёнок Кузя 2",year:2025,genre:"Фантастика",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BYzllYWNmMDQtMjcxYy00MmRkLWFkZWQtZTFhZGFmYTM3ZTVkXkEyXkFqcGc@._V1_.jpg",
-   desc:"Любимый домовёнок Кузя возвращается в новом приключении полном магии и добра."},
-  {id:10,title:"На цепи",year:2025,genre:"Боевик",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BZmU5OGNiMDMtZWM4OS00NWI0LWFlMzQtN2Q1ZWJlNjI4ZDVhXkEyXkFqcGc@._V1_.jpg",
-   desc:"Бывший спецназовец оказывается втянут в смертельную игру криминального мира."},
-  {id:11,title:"Королёк моей любви",year:2025,genre:"Комедия",country:"Россия",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BNjI3ZjMzMjEtNWZlMy00MTU5LWJkZmEtZWVkNzE0NjZhMWI5XkEyXkFqcGc@._V1_.jpg",
-   desc:"Романтическая комедия о неожиданной встрече двух совершенно разных людей."},
-  {id:12,title:"Ночная тишина 2",year:2025,genre:"Хоррор",country:"США",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BM2Q5MTkzZjMtMGZmNC00MzVkLWIyZWQtNzk4MzJkYmRiNWRlXkEyXkFqcGc@._V1_.jpg",
-   desc:"Продолжение хоррора о доме, в котором не бывает тишины — только ужас."},
-  {id:13,title:"57 секунд",year:2025,genre:"Боевик",country:"США",type:"movie",
-   poster:"https://m.media-amazon.com/images/M/MV5BZDU4MzYxMGQtNzIxZS00ZDdkLWI1YzUtZjliMjRlZDhmNjA0XkEyXkFqcGc@._V1_.jpg",
-   desc:"Технологический триллер о кольце, дающем возможность перемотать время на 57 секунд назад."},
-  // Сериалы
-  {id:101,title:"Слово пацана",year:2024,genre:"Драма",country:"Россия",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BMWFhYzJjZGEtZjkwNi00ODkxLTljNmYtMDJlMjJmNTI5OWRmXkEyXkFqcGc@._V1_.jpg",
-   seasons:1,desc:"Криминальная драма о молодёжных группировках Казани 80-х годов."},
-  {id:102,title:"Эпидемия",year:2024,genre:"Триллер",country:"Россия",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BYWVlMzBkYmYtYzJiMS00YzdlLTg2Y2YtNTYxMThiOGY4NjFiXkEyXkFqcGc@._V1_.jpg",
-   seasons:2,desc:"Выжившие после загадочного вируса пытаются добраться до Байкала в надежде на спасение."},
-  {id:103,title:"Нулевой пациент",year:2024,genre:"Драма",country:"Россия",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BNTlhN2RiY2MtZWU1Zi00NzQ1LWJiNTMtNjk3NzM5N2I1YWE5XkEyXkFqcGc@._V1_.jpg",
-   seasons:1,desc:"История о первых случаях ВИЧ в СССР, основанная на реальных событиях."},
-  {id:104,title:"Чиновники",year:2025,genre:"Комедия",country:"Россия",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BYjM0N2VhZGEtYmVhZC00ZWYwLTkzMTMtNjEyNDMyNTA1MTVlXkEyXkFqcGc@._V1_.jpg",
-   seasons:1,desc:"Сатирическая комедия о работниках провинциальной администрации."},
-  {id:105,title:"Мир Дикого Запада",year:2024,genre:"Фантастика",country:"США",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BMTRmYzNmOTctZjMwOS00ODZlLWJiZGQtNDE2NGQxYjNkNTM4XkEyXkFqcGc@._V1_.jpg",
-   seasons:4,desc:"В футуристическом парке развлечений роботы начинают обретать сознание."},
-  {id:106,title:"Разрыв",year:2025,genre:"Триллер",country:"Россия",type:"series",
-   poster:"https://m.media-amazon.com/images/M/MV5BZGUxYWQzNGQtOGQ3Yi00Y2M3LTk1NDMtYjBjYWMwMzgxNzYyXkEyXkFqcGc@._V1_.jpg",
-   seasons:1,desc:"Психологический триллер о семье, которая переехала в тихий загородный дом."},
-];
-
-const GENRES=[...new Set(MOVIES.map(m=>m.genre))].sort();
-const COUNTRIES=[...new Set(MOVIES.map(m=>m.country))].sort();
-const YEARS=[...new Set(MOVIES.map(m=>m.year))].sort((a,b)=>b-a);
-
-// ── LS HELPERS ────────────────────────────────────────────────────────────────
+// ── LOCALSTORAGE HELPERS ──────────────────────────────────────────────────────
 const lsGet=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
 
+// ── DB LAYER ──────────────────────────────────────────────────────────────────
+// Загружаем db.json один раз, потом храним в localStorage как кэш + пользовательские правки
+const DB_KEY='km_db_v1';
+
+async function loadDB(){
+  // Если есть в localStorage — используем его (включая добавленные администратором фильмы)
+  const cached=lsGet(DB_KEY,null);
+  if(cached)return cached;
+  // Иначе fetch из файла
+  try{
+    const r=await fetch('db.json');
+    if(!r.ok)throw new Error('no db.json');
+    const data=await r.json();
+    lsSet(DB_KEY,data);
+    return data;
+  }catch{
+    // Fallback — встроенная база если db.json не найден (например, открыт как file://)
+    const fallback=getFallbackDB();
+    lsSet(DB_KEY,fallback);
+    return fallback;
+  }
+}
+
+function saveDB(db){lsSet(DB_KEY,db);}
+
+function getFallbackDB(){
+  return{movies:[
+    {id:1,title:"Дюна: Часть Третья",year:2026,genre:"Боевик",country:"США",type:"movie",poster:"",desc:"Продолжение эпической саги о Поле Атрейдесе и его пути к власти на планете Арракис."},
+    {id:2,title:"Мстители: Доктор Дум",year:2026,genre:"Боевик",country:"США",type:"movie",poster:"",desc:"Могущественный Доктор Дум бросает вызов Мстителям и угрожает существованию всей вселенной."},
+    {id:3,title:"Ёлки 13",year:2026,genre:"Комедия",country:"Россия",type:"movie",poster:"",desc:"Тринадцатая часть любимой новогодней комедии."},
+    {id:4,title:"Ночная тишина",year:2026,genre:"Комедия",country:"Россия",type:"movie",poster:"",desc:"Комедийная история о тихой ночи, превратившейся в череду невероятных событий."},
+    {id:5,title:"Легенды наших предков",year:2025,genre:"Фэнтзи",country:"Россия",type:"movie",poster:"",desc:"Молодая героиня отправляется в магическое путешествие."},
+    {id:6,title:"Кейпоп-охотницы на демонов",year:2025,genre:"Боевик",country:"Корея",type:"movie",poster:"",desc:"Группа K-pop артисток тайно является охотниками на демонов."},
+    {id:7,title:"Рай под ногами матерей",year:2024,genre:"Драма",country:"Россия",type:"movie",poster:"",desc:"Трогательная история о материнской любви и жертвенности."},
+    {id:8,title:"Казнить нельзя помиловать",year:2026,genre:"Триллер",country:"Россия",type:"movie",poster:"",desc:"Юридический триллер о несправедливости системы."},
+    {id:9,title:"Домовёнок Кузя 2",year:2025,genre:"Фантастика",country:"Россия",type:"movie",poster:"",desc:"Любимый домовёнок Кузя возвращается в новом приключении."},
+    {id:10,title:"На цепи",year:2025,genre:"Боевик",country:"Россия",type:"movie",poster:"",desc:"Бывший спецназовец втянут в смертельную игру криминального мира."},
+    {id:11,title:"Королёк моей любви",year:2025,genre:"Комедия",country:"Россия",type:"movie",poster:"",desc:"Романтическая комедия о неожиданной встрече двух разных людей."},
+    {id:12,title:"Ночная тишина 2",year:2025,genre:"Хоррор",country:"США",type:"movie",poster:"",desc:"Продолжение хоррора о доме, в котором не бывает тишины."},
+    {id:13,title:"57 секунд",year:2025,genre:"Боевик",country:"США",type:"movie",poster:"",desc:"Технологический триллер о кольце, дающем возможность перемотать время."},
+    {id:101,title:"Слово пацана",year:2024,genre:"Драма",country:"Россия",type:"series",seasons:1,poster:"",desc:"Криминальная драма о молодёжных группировках Казани 80-х годов."},
+    {id:102,title:"Эпидемия",year:2024,genre:"Триллер",country:"Россия",type:"series",seasons:2,poster:"",desc:"Выжившие после загадочного вируса пытаются добраться до Байкала."},
+    {id:103,title:"Нулевой пациент",year:2024,genre:"Драма",country:"Россия",type:"series",seasons:1,poster:"",desc:"История о первых случаях ВИЧ в СССР."},
+    {id:104,title:"Чиновники",year:2025,genre:"Комедия",country:"Россия",type:"series",seasons:1,poster:"",desc:"Сатирическая комедия о работниках провинциальной администрации."},
+    {id:105,title:"Мир Дикого Запада",year:2024,genre:"Фантастика",country:"США",type:"series",seasons:4,poster:"",desc:"В футуристическом парке развлечений роботы начинают обретать сознание."},
+    {id:106,title:"Разрыв",year:2025,genre:"Триллер",country:"Россия",type:"series",seasons:1,poster:"",desc:"Психологический триллер о семье в тихом загородном доме."},
+  ]};
+}
+
 // ── POSTER COMPONENT ──────────────────────────────────────────────────────────
-function Poster({src,alt,className,style}){
+function Poster({src,alt,className,style,mini}){
   const[err,setErr]=useState(false);
-  if(err||!src)return<div className="poster-placeholder"style={style}>{alt||"Постер"}</div>;
-  return<img src={src}alt={alt||""}className={className}style={style}onError={()=>setErr(true)}/>;
+  if(err||!src){
+    if(mini)return<div className="poster-mini-ph">{(alt||'').slice(0,6)}</div>;
+    return<div className="poster-ph"style={style}>{alt||'Постер'}</div>;
+  }
+  return<img src={src}alt={alt||''}className={className}style={style}onError={()=>setErr(true)}/>;
 }
 
 // ── AUTH MODAL ────────────────────────────────────────────────────────────────
 function AuthModal({onClose,onAuth}){
-  const[mode,setMode]=useState('login');// login | register | forgot | step2
+  const[mode,setMode]=useState('start');
   const[email,setEmail]=useState('');
   const[password,setPassword]=useState('');
   const[name,setName]=useState('');
@@ -247,130 +238,292 @@ function AuthModal({onClose,onAuth}){
 
   const users=lsGet('km_users',{});
 
-  const submit=()=>{
+  const nextFromStart=()=>{
     setError('');
     if(!email.includes('@')){setError('Введите корректный email');return;}
+    setMode(users[email]?'login':'register');
+  };
+
+  const submit=()=>{
+    setError('');
     if(mode==='login'){
       if(!users[email]){setError('Пользователь не найден');return;}
       if(users[email].password!==password){setError('Неверный пароль');return;}
-      lsSet('km_cur',{email,name:users[email].name});
-      onAuth({email,name:users[email].name});
-    }else if(mode==='register'){
+      const u={email,name:users[email].name};
+      lsSet('km_cur',u);onAuth(u);
+    }else{
       if(!name.trim()){setError('Введите имя');return;}
       if(password.length<4){setError('Пароль минимум 4 символа');return;}
-      const newUsers={...users,[email]:{password,name:name.trim()}};
-      lsSet('km_users',newUsers);
-      lsSet('km_cur',{email,name:name.trim()});
-      onAuth({email,name:name.trim()});
+      lsSet('km_users',{...users,[email]:{password,name:name.trim()}});
+      const u={email,name:name.trim()};
+      lsSet('km_cur',u);onAuth(u);
     }
-  };
-
-  const isStep1=mode==='step1';
-  const step1Next=()=>{
-    if(!email.includes('@')){setError('Введите корректный email');return;}
-    if(users[email])setMode('login');else setMode('register');
   };
 
   return(
     <div className="modal-overlay"onClick={e=>{if(e.target.className==='modal-overlay')onClose()}}>
       <div className="modal">
         <button className="modal-close"onClick={onClose}>×</button>
-        <h2>ВХОД ИЛИ РЕГИСТРАЦИЯ</h2>
+        <h2>ВХОД / РЕГИСТРАЦИЯ</h2>
         {error&&<div className="modal-error">{error}</div>}
-        <div className="modal-label">ВВЕДИТЕ ЭЛЕКТРОННУЮ ПОЧТУ:</div>
-        <input className="modal-input"type="email"placeholder="Электронная почта"
+        <div className="modal-label">ЭЛЕКТРОННАЯ ПОЧТА:</div>
+        <input className="modal-input"type="email"placeholder="email@example.com"
           value={email}onChange={e=>setEmail(e.target.value)}
-          onKeyDown={e=>e.key==='Enter'&&(mode==='step1'?step1Next():submit())}/>
-        {mode==='register'&&<>
-          <div className="modal-label">ИМЯ:</div>
-          <input className="modal-input"type="text"placeholder="Ваше имя"
-            value={name}onChange={e=>setName(e.target.value)}/>
-        </>}
-        {(mode==='login'||mode==='register')&&<>
+          onKeyDown={e=>e.key==='Enter'&&(mode==='start'?nextFromStart():submit())}
+          disabled={mode!=='start'}/>
+        {mode!=='start'&&<>
+          {mode==='register'&&<><div className="modal-label">ИМЯ:</div>
+            <input className="modal-input"type="text"placeholder="Ваше имя"
+              value={name}onChange={e=>setName(e.target.value)}/></>}
           <div className="modal-label">ПАРОЛЬ:</div>
           <input className="modal-input"type="password"placeholder="Пароль"
             value={password}onChange={e=>setPassword(e.target.value)}
             onKeyDown={e=>e.key==='Enter'&&submit()}/>
         </>}
-        {mode==='step1'&&<button className="modal-submit"onClick={step1Next}>ПРОДОЛЖИТЬ</button>}
-        {(mode==='login'||mode==='register')&&<button className="modal-submit"onClick={submit}>
+        {mode==='start'&&<button className="modal-submit"onClick={nextFromStart}>ПРОДОЛЖИТЬ</button>}
+        {mode!=='start'&&<button className="modal-submit"onClick={submit}>
           {mode==='login'?'ВОЙТИ':'ЗАРЕГИСТРИРОВАТЬСЯ'}
         </button>}
-        {mode==='step1'&&<div className="modal-switch">
-          Нет аккаунта? <span onClick={()=>setMode('register')}>Зарегистрироваться</span>
-        </div>}
-        {mode==='login'&&<div className="modal-switch">
-          Нет аккаунта? <span onClick={()=>{setMode('register');setError('')}}>Зарегистрироваться</span>
-        </div>}
-        {mode==='register'&&<div className="modal-switch">
-          Есть аккаунт? <span onClick={()=>{setMode('login');setError('')}}>Войти</span>
-        </div>}
-        {mode==='step1'&&<button className="modal-submit"style={{marginTop:8,background:'#333'}}
-          onClick={()=>{if(!email.includes('@')){setError('Email?');return;}setMode('login')}}>ВОЙТИ С ПАРОЛЕМ</button>}
+        {mode==='login'&&<div className="modal-switch">Нет аккаунта? <span onClick={()=>{setMode('register');setError('')}}>Зарегистрироваться</span></div>}
+        {mode==='register'&&<div className="modal-switch">Есть аккаунт? <span onClick={()=>{setMode('login');setError('')}}>Войти</span></div>}
+        {mode!=='start'&&<div className="modal-switch"><span onClick={()=>{setMode('start');setError('')}}>← Изменить email</span></div>}
       </div>
     </div>
   );
 }
 
-// ── MOVIE CARD ────────────────────────────────────────────────────────────────
-function MovieCard({movie,onClick}){
+// ── ADMIN PANEL ───────────────────────────────────────────────────────────────
+const GENRES_LIST=["Боевик","Комедия","Драма","Триллер","Фэнтзи","Фантастика","Хоррор","Мелодрама","Анимация","Документальный"];
+const COUNTRIES_LIST=["Россия","США","Корея","Германия","Франция","Великобритания","Япония","Китай","Индия","Италия"];
+const EMPTY_FORM={title:'',year:String(new Date().getFullYear()),genre:'Боевик',country:'Россия',type:'movie',seasons:'1',poster:'',desc:''};
+
+function AdminPanel({db,onDBChange,onBack}){
+  const[subtab,setSubtab]=useState('list');
+  const[form,setForm]=useState(EMPTY_FORM);
+  const[editId,setEditId]=useState(null);
+  const[success,setSuccess]=useState('');
+  const[filterType,setFilterType]=useState('all');
+  const[search,setSearch]=useState('');
+
+  const movies=db.movies;
+  const visible=movies.filter(m=>{
+    if(filterType!=='all'&&m.type!==filterType)return false;
+    if(search&&!m.title.toLowerCase().includes(search.toLowerCase()))return false;
+    return true;
+  });
+
+  const setF=(k,v)=>setForm(f=>({...f,[k]:v}));
+
+  const startEdit=(m)=>{
+    setForm({title:m.title,year:String(m.year),genre:m.genre,country:m.country,
+      type:m.type,seasons:String(m.seasons||1),poster:m.poster||'',desc:m.desc||''});
+    setEditId(m.id);setSubtab('add');setSuccess('');
+  };
+
+  const cancelEdit=()=>{setForm(EMPTY_FORM);setEditId(null);setSubtab('list');};
+
+  const save=()=>{
+    if(!form.title.trim()){alert('Введите название');return;}
+    const entry={
+      id:editId||(Date.now()),
+      title:form.title.trim(),
+      year:parseInt(form.year)||2025,
+      genre:form.genre,
+      country:form.country,
+      type:form.type,
+      poster:form.poster.trim(),
+      desc:form.desc.trim(),
+      ...(form.type==='series'?{seasons:parseInt(form.seasons)||1}:{})
+    };
+    let newMovies;
+    if(editId){
+      newMovies=movies.map(m=>m.id===editId?entry:m);
+      setSuccess('Запись обновлена ✓');
+    }else{
+      newMovies=[...movies,entry];
+      setSuccess('Фильм добавлен ✓');
+    }
+    const newDB={...db,movies:newMovies};
+    saveDB(newDB);onDBChange(newDB);
+    setForm(EMPTY_FORM);setEditId(null);
+    if(!editId)setSubtab('list');
+  };
+
+  const remove=(id)=>{
+    if(!confirm('Удалить эту запись?'))return;
+    const newDB={...db,movies:movies.filter(m=>m.id!==id)};
+    saveDB(newDB);onDBChange(newDB);
+  };
+
+  const resetDB=()=>{
+    if(!confirm('Сбросить базу к начальным данным? Все изменения будут потеряны.'))return;
+    const fb=getFallbackDB();saveDB(fb);onDBChange(fb);setSuccess('База сброшена');
+  };
+
+  const exportDB=()=>{
+    const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='db.json';a.click();
+  };
+
   return(
-    <div className="movie-card"onClick={()=>onClick(movie)}>
-      <Poster src={movie.poster}alt={movie.title}/>
-      <div className="mc-title">{movie.title}</div>
-      <div className="mc-meta">{movie.year}, {movie.genre}</div>
+    <div className="admin-page">
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:20}}>
+        <h1>ПАНЕЛЬ АДМИНИСТРАТОРА</h1>
+        <button className="btn-back"onClick={onBack}>← НАЗАД</button>
+      </div>
+      <div className="admin-tab-row">
+        <div className={`admin-tab${subtab==='list'?' active':''}`}onClick={()=>{setSubtab('list');cancelEdit()}}>СПИСОК ({movies.length})</div>
+        <div className={`admin-tab${subtab==='add'?' active':''}`}onClick={()=>{setSubtab('add');if(!editId)setForm(EMPTY_FORM)}}>
+          {editId?'РЕДАКТИРОВАТЬ':'ДОБАВИТЬ'}
+        </div>
+      </div>
+
+      {subtab==='list'&&<>
+        <div style={{display:'flex',gap:12,marginBottom:16,flexWrap:'wrap'}}>
+          <input className="admin-input"placeholder="Поиск по названию..."
+            value={search}onChange={e=>setSearch(e.target.value)}style={{flex:1,minWidth:200}}/>
+          <select className="admin-select"value={filterType}onChange={e=>setFilterType(e.target.value)}style={{width:160}}>
+            <option value="all">Все ({movies.length})</option>
+            <option value="movie">Фильмы ({movies.filter(m=>m.type==='movie').length})</option>
+            <option value="series">Сериалы ({movies.filter(m=>m.type==='series').length})</option>
+          </select>
+          <button className="admin-btn secondary"onClick={exportDB}>ЭКСПОРТ JSON</button>
+          <button className="admin-btn danger"onClick={resetDB}>СБРОС БД</button>
+        </div>
+        <div style={{overflowX:'auto'}}>
+          <table className="admin-table">
+            <thead><tr>
+              <th>Постер</th><th>Название</th><th>Год</th><th>Жанр</th>
+              <th>Страна</th><th>Тип</th><th>Действия</th>
+            </tr></thead>
+            <tbody>
+              {visible.map(m=>(
+                <tr key={m.id}>
+                  <td><Poster src={m.poster}alt={m.title}mini/></td>
+                  <td style={{maxWidth:200}}>{m.title}</td>
+                  <td>{m.year}</td>
+                  <td>{m.genre}</td>
+                  <td>{m.country}</td>
+                  <td>{m.type==='movie'?'Фильм':'Сериал'}{m.seasons?` (${m.seasons}с)`:''}</td>
+                  <td style={{whiteSpace:'nowrap'}}>
+                    <button className="admin-btn"style={{padding:'5px 12px',fontSize:13}}onClick={()=>startEdit(m)}>✏️</button>
+                    {' '}
+                    <button className="admin-btn danger"style={{padding:'5px 12px',fontSize:13}}onClick={()=>remove(m.id)}>🗑️</button>
+                  </td>
+                </tr>
+              ))}
+              {visible.length===0&&<tr><td colSpan={7}style={{textAlign:'center',color:'#555',padding:30}}>Ничего не найдено</td></tr>}
+            </tbody>
+          </table>
+        </div>
+      </>}
+
+      {subtab==='add'&&<div className="admin-form">
+        <h2>{editId?'РЕДАКТИРОВАТЬ ЗАПИСЬ':'ДОБАВИТЬ ФИЛЬМ / СЕРИАЛ'}</h2>
+        <div className="admin-row">
+          <div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>НАЗВАНИЕ *</div>
+            <input className="admin-input"placeholder="Название"value={form.title}onChange={e=>setF('title',e.target.value)}/>
+          </div>
+          <div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>ГОД ВЫПУСКА</div>
+            <input className="admin-input"type="number"placeholder="2025"value={form.year}onChange={e=>setF('year',e.target.value)}/>
+          </div>
+        </div>
+        <div className="admin-row">
+          <div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>ЖАНР</div>
+            <select className="admin-select"value={form.genre}onChange={e=>setF('genre',e.target.value)}>
+              {GENRES_LIST.map(g=><option key={g}value={g}>{g}</option>)}
+            </select>
+          </div>
+          <div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>СТРАНА</div>
+            <select className="admin-select"value={form.country}onChange={e=>setF('country',e.target.value)}>
+              {COUNTRIES_LIST.map(c=><option key={c}value={c}>{c}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className="admin-row">
+          <div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>ТИП</div>
+            <select className="admin-select"value={form.type}onChange={e=>setF('type',e.target.value)}>
+              <option value="movie">Фильм</option>
+              <option value="series">Сериал</option>
+            </select>
+          </div>
+          {form.type==='series'&&<div>
+            <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>СЕЗОНОВ</div>
+            <input className="admin-input"type="number"min="1"value={form.seasons}onChange={e=>setF('seasons',e.target.value)}/>
+          </div>}
+        </div>
+        <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>URL ПОСТЕРА (ссылка на изображение или путь posters/name.jpg)</div>
+        <input className="admin-input"placeholder="https://... или posters/filename.jpg"
+          value={form.poster}onChange={e=>setF('poster',e.target.value)}style={{width:'100%',marginBottom:12}}/>
+        {form.poster&&<div style={{marginBottom:12}}>
+          <Poster src={form.poster}alt={form.title}style={{height:120,width:'auto',display:'block'}}/>
+        </div>}
+        <div className="modal-label"style={{color:'#aaa',marginBottom:4}}>ОПИСАНИЕ</div>
+        <textarea className="admin-textarea"placeholder="Краткое описание..."
+          value={form.desc}onChange={e=>setF('desc',e.target.value)}/>
+        <div>
+          <button className="admin-btn"onClick={save}>{editId?'СОХРАНИТЬ ИЗМЕНЕНИЯ':'ДОБАВИТЬ'}</button>
+          <button className="admin-btn secondary"onClick={cancelEdit}>ОТМЕНА</button>
+        </div>
+        {success&&<div className="admin-success">{success}</div>}
+      </div>}
     </div>
   );
 }
 
-// ── FILTERS ───────────────────────────────────────────────────────────────────
-function Filters({filters,onChange}){
-  const[openDrop,setOpenDrop]=useState(null);
-
-  const toggle=(f)=>setOpenDrop(openDrop===f?null:f);
-  const select=(f,v)=>{onChange({...filters,[f]:v});setOpenDrop(null)};
-
-  const opts={genre:['',...GENRES],year:['',String(YEARS[0]),String(YEARS[1]),...YEARS.slice(2).map(String)],country:['',...COUNTRIES]};
-  const labels={genre:'ЖАНР',year:'ГОД ВЫПУСКА',country:'СТРАНА ВЫПУСКА'};
-
+// ── FILTERS PANEL ─────────────────────────────────────────────────────────────
+function Filters({filters,onChange,movies}){
+  const genres=useMemo(()=>['',...new Set(movies.map(m=>m.genre))].sort(),[movies]);
+  const countries=useMemo(()=>['',...new Set(movies.map(m=>m.country))].sort(),[movies]);
+  const years=useMemo(()=>['',...new Set(movies.map(m=>String(m.year)))].sort((a,b)=>b-a),[movies]);
   return(
     <div className="filters">
       <h2>ФИЛЬТРЫ</h2>
-      {['year','genre','country'].map(f=>(
-        <div className="filter-group"key={f}>
-          <label>{labels[f]}:</label>
-          <div className="filter-select-wrap">
-            <select className="filter-select"value={filters[f]}onChange={e=>onChange({...filters,[f]:e.target.value})}>
-              {opts[f].map(o=><option key={o}value={o}>{o||'—'}</option>)}
-            </select>
-          </div>
+      {[
+        {k:'year',label:'ГОД ВЫПУСКА',opts:years},
+        {k:'genre',label:'ЖАНР',opts:genres},
+        {k:'country',label:'СТРАНА',opts:countries},
+      ].map(({k,label,opts})=>(
+        <div className="filter-group"key={k}>
+          <label>{label}:</label>
+          <select className="filter-select"value={filters[k]}onChange={e=>onChange({...filters,[k]:e.target.value})}>
+            {opts.map(o=><option key={o}value={o}>{o||'—'}</option>)}
+          </select>
         </div>
       ))}
+      {(filters.year||filters.genre||filters.country)&&
+        <button className="admin-btn secondary"style={{width:'100%',fontSize:13,padding:'7px 0'}}
+          onClick={()=>onChange({year:'',genre:'',country:''})}>СБРОСИТЬ</button>}
     </div>
   );
 }
 
 // ── HOME PAGE ─────────────────────────────────────────────────────────────────
-function HomePage({onMovie}){
-  const movies=MOVIES.filter(m=>m.type==='movie');
-  const action=movies.filter(m=>m.genre==='Боевик').slice(0,2);
-  const comedy=movies.filter(m=>m.genre==='Комедия').slice(0,2);
-  const popular=movies.slice(0,4);
-  const march=movies.slice(8,10);
-  const april=movies.slice(10,12);
+function HomePage({movies,onMovie}){
+  const ms=movies.filter(m=>m.type==='movie');
+  const action=ms.filter(m=>m.genre==='Боевик').slice(0,2);
+  const comedy=ms.filter(m=>m.genre==='Комедия').slice(0,2);
+  const popular=ms.slice(0,4);
+  const march=ms.slice(8,10);
+  const april=ms.slice(10,12);
 
-  const Thumb=({movie,showDate})=>(
+  const Thumb=({movie,date})=>(
     <div className="movie-thumb"onClick={()=>onMovie(movie)}>
       <Poster src={movie.poster}alt={movie.title}/>
       <div className="mtitle">{movie.title}</div>
-      {showDate?<div className="myear">{showDate}</div>:<div className="myear">{movie.year}, {movie.genre}</div>}
+      <div className="myear">{date||`${movie.year}, ${movie.genre}`}</div>
     </div>
   );
 
   return(
     <div className="page">
       <div className="home-grid">
-        {/* LEFT: upcoming */}
         <div>
           <div className="section-title">ОЖИДАЕМЫЕ НОВИНКИ</div>
           <div className="genre-block">
@@ -382,14 +535,12 @@ function HomePage({onMovie}){
             <div className="genre-row">{comedy.map(m=><Thumb key={m.id}movie={m}/>)}</div>
           </div>
         </div>
-        {/* CENTER: popular */}
         <div>
           <div className="section-title"style={{textAlign:'center'}}>ПОПУЛЯРНОЕ</div>
           <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
             {popular.map(m=><Thumb key={m.id}movie={m}/>)}
           </div>
         </div>
-        {/* RIGHT: releases */}
         <div>
           <div className="section-title"style={{textAlign:'right'}}>БЛИЖАЙШИЕ РЕЛИЗЫ</div>
           <div className="release-month">МАРТ</div>
@@ -418,25 +569,31 @@ function HomePage({onMovie}){
   );
 }
 
-// ── FILMS / SERIES LIST ───────────────────────────────────────────────────────
-function ListPage({type,onMovie}){
+// ── LIST PAGE ─────────────────────────────────────────────────────────────────
+function ListPage({type,movies,onMovie}){
   const[filters,setFilters]=useState({genre:'',year:'',country:''});
-  const items=MOVIES.filter(m=>m.type===type);
-
+  const items=movies.filter(m=>m.type===type);
   const filtered=items.filter(m=>{
     if(filters.genre&&m.genre!==filters.genre)return false;
     if(filters.year&&String(m.year)!==filters.year)return false;
     if(filters.country&&m.country!==filters.country)return false;
     return true;
   });
-
   return(
     <div className="page">
       <div className="films-layout">
-        <Filters filters={filters}onChange={setFilters}/>
-        <div className="movies-grid">
-          {filtered.length===0&&<div className="no-results"style={{gridColumn:'1/-1'}}>Ничего не найдено</div>}
-          {filtered.map(m=><MovieCard key={m.id}movie={m}onClick={onMovie}/>)}
+        <Filters filters={filters}onChange={setFilters}movies={items}/>
+        <div>
+          <div className="movies-grid">
+            {filtered.length===0&&<div className="no-results"style={{gridColumn:'1/-1'}}>Ничего не найдено</div>}
+            {filtered.map(m=>(
+              <div className="movie-card"key={m.id}onClick={()=>onMovie(m)}>
+                <Poster src={m.poster}alt={m.title}/>
+                <div className="mc-title">{m.title}</div>
+                <div className="mc-meta">{m.year}, {m.genre}{m.seasons?`, ${m.seasons} сез.`:''}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -454,10 +611,9 @@ function InfoPage(){
           <p>Эксклюзивные премьеры, тысячи фильмов, сериалов, мультфильмов.</p>
           <p>Смотрите и проживайте новые истории каждый день!</p>
           <div className="info-devices">
-            <div className="info-device"><div className="dev-icon">📱</div>СМАРТФОН</div>
-            <div className="info-device"><div className="dev-icon">💻</div>НОУТБУК</div>
-            <div className="info-device"><div className="dev-icon">🖥️</div>ТЕЛЕВИЗОР</div>
-            <div className="info-device"><div className="dev-icon">📟</div>ПЛАНШЕТ</div>
+            {[['📱','СМАРТФОН'],['💻','НОУТБУК'],['🖥️','ТЕЛЕВИЗОР'],['📟','ПЛАНШЕТ']].map(([i,l])=>(
+              <div className="info-device"key={l}><div className="dev-icon">{i}</div>{l}</div>
+            ))}
           </div>
         </div>
       </div>
@@ -468,26 +624,21 @@ function InfoPage(){
 // ── MOVIE DETAIL ──────────────────────────────────────────────────────────────
 function MovieDetail({movie,user,onBack,favs,toggleFav,onAuthNeeded}){
   const isFav=favs.includes(movie.id);
-  const handleFav=()=>{
-    if(!user){onAuthNeeded();return;}
-    toggleFav(movie.id);
-  };
   return(
     <div className="movie-detail">
       <div className="md-top">
-        <div className="md-poster"><Poster src={movie.poster}alt={movie.title}style={{width:'100%'}}/></div>
-        <div className="md-info">
+        <div className="md-poster"><Poster src={movie.poster}alt={movie.title}/></div>
+        <div style={{flex:1}}>
           <div className="md-title">{movie.title}</div>
           <div className="md-meta">{movie.year} • {movie.genre} • {movie.country}{movie.seasons?` • ${movie.seasons} сезон(а)`:''}</div>
           <div>
-            <span className="md-badge">{movie.genre}</span>
-            <span className="md-badge">{movie.country}</span>
-            <span className="md-badge">{movie.year}</span>
-            {movie.type==='series'&&<span className="md-badge">Сериал</span>}
+            {[movie.genre,movie.country,String(movie.year)].map(b=><span className="md-badge"key={b}>{b}</span>)}
+            <span className="md-badge">{movie.type==='series'?'Сериал':'Фильм'}</span>
           </div>
-          <div className="md-desc">{movie.desc}</div>
+          <div className="md-desc">{movie.desc||'Описание отсутствует.'}</div>
           <div className="md-actions">
-            <button className={`btn-fav${isFav?' active':''}`}onClick={handleFav}>
+            <button className={`btn-fav${isFav?' active':''}`}
+              onClick={()=>user?toggleFav(movie.id):onAuthNeeded()}>
               {isFav?'❤ В ИЗБРАННОМ':'♡ В ИЗБРАННОЕ'}
             </button>
             <button className="btn-back"onClick={onBack}>← НАЗАД</button>
@@ -499,8 +650,9 @@ function MovieDetail({movie,user,onBack,favs,toggleFav,onAuthNeeded}){
 }
 
 // ── PROFILE PAGE ──────────────────────────────────────────────────────────────
-function ProfilePage({user,onLogout,favs,onMovie}){
-  const favMovies=MOVIES.filter(m=>favs.includes(m.id));
+function ProfilePage({user,movies,onLogout,favs,onMovie,onAdmin}){
+  const favMovies=movies.filter(m=>favs.includes(m.id));
+  const isAdmin=lsGet('km_users',{})[user.email]?.isAdmin;
   return(
     <div className="profile-page">
       <h1>ПРОФИЛЬ</h1>
@@ -508,27 +660,27 @@ function ProfilePage({user,onLogout,favs,onMovie}){
         <p><strong>Имя:</strong> {user.name}</p>
         <p><strong>Email:</strong> {user.email}</p>
       </div>
-      <h2 style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:22,letterSpacing:3,marginBottom:16}}>
-        ИЗБРАННОЕ ({favMovies.length})
-      </h2>
-      {favMovies.length===0&&<div style={{color:'#666',marginBottom:20}}>Пока ничего не добавлено</div>}
+      {isAdmin&&<button className="admin-btn"style={{marginBottom:16}}onClick={onAdmin}>⚙️ ПАНЕЛЬ АДМИНИСТРАТОРА</button>}
+      <div className="fav-section-title">ИЗБРАННОЕ ({favMovies.length})</div>
+      {favMovies.length===0&&<div style={{color:'#666',marginBottom:20}}>Ничего не добавлено</div>}
       <div className="fav-grid">
         {favMovies.map(m=>(
-          <div key={m.id}className="movie-thumb"onClick={()=>onMovie(m)}>
+          <div className="movie-thumb"key={m.id}onClick={()=>onMovie(m)}>
             <Poster src={m.poster}alt={m.title}/>
             <div className="mtitle">{m.title}</div>
           </div>
         ))}
       </div>
+      <br/>
       <button className="logout-btn"onClick={onLogout}>ВЫЙТИ</button>
     </div>
   );
 }
 
-// ── SEARCH RESULTS ─────────────────────────────────────────────────────────────
-function SearchResults({query,onMovie}){
+// ── SEARCH RESULTS ────────────────────────────────────────────────────────────
+function SearchResults({query,movies,onMovie}){
   const q=query.toLowerCase().trim();
-  const results=q?MOVIES.filter(m=>
+  const results=q?movies.filter(m=>
     m.title.toLowerCase().includes(q)||
     m.genre.toLowerCase().includes(q)||
     m.country.toLowerCase().includes(q)||
@@ -536,54 +688,62 @@ function SearchResults({query,onMovie}){
   ):[];
   return(
     <div className="search-results">
-      <h2>ПОИСК: «{query}»</h2>
+      <h2>ПОИСК: «{query}» — {results.length} результатов</h2>
       {results.length===0&&<div className="no-results">Ничего не найдено</div>}
       <div className="movies-grid">
-        {results.map(m=><MovieCard key={m.id}movie={m}onClick={onMovie}/>)}
+        {results.map(m=>(
+          <div className="movie-card"key={m.id}onClick={()=>onMovie(m)}>
+            <Poster src={m.poster}alt={m.title}/>
+            <div className="mc-title">{m.title}</div>
+            <div className="mc-meta">{m.year}, {m.genre}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-// ── APP ────────────────────────────────────────────────────────────────────────
+// ── ROOT APP ──────────────────────────────────────────────────────────────────
 function App(){
-  const[tab,setTab]=useState('home'); // home|movies|series|info|profile|search|detail
+  const[db,setDB]=useState(null);
+  const[tab,setTab]=useState('home');
+  const[prevTab,setPrevTab]=useState('home');
   const[showAuth,setShowAuth]=useState(false);
   const[user,setUser]=useState(()=>lsGet('km_cur',null));
-  const[favs,setFavs]=useState(()=>lsGet('km_favs_'+(lsGet('km_cur',null)?.email||''),[]) );
+  const[favs,setFavs]=useState([]);
   const[selectedMovie,setSelectedMovie]=useState(null);
-  const[prevTab,setPrevTab]=useState('home');
-  const[searchQ,setSearchQ]=useState('');
   const[searchInput,setSearchInput]=useState('');
+  const[searchQ,setSearchQ]=useState('');
 
-  // sync favs when user changes
+  // Load DB on mount
+  useEffect(()=>{
+    loadDB().then(data=>setDB(data));
+  },[]);
+
+  // Sync favs
   useEffect(()=>{
     if(user)setFavs(lsGet('km_favs_'+user.email,[]));
     else setFavs([]);
   },[user?.email]);
 
-  const toggleFav=(id)=>{
+  const movies=db?.movies||[];
+
+  const toggleFav=useCallback((id)=>{
     if(!user)return;
     const next=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];
-    setFavs(next);
-    lsSet('km_favs_'+user.email,next);
-  };
+    setFavs(next);lsSet('km_favs_'+user.email,next);
+  },[user,favs]);
 
   const goMovie=(m)=>{setPrevTab(tab);setSelectedMovie(m);setTab('detail')};
   const goBack=()=>{setSelectedMovie(null);setTab(prevTab)};
 
-  const handleAuth=(u)=>{setUser(u);setShowAuth(false);};
-  const handleLogout=()=>{
-    lsSet('km_cur',null);
-    localStorage.removeItem('km_cur');
-    setUser(null);setTab('home');
-  };
+  const handleAuth=(u)=>{setUser(u);setShowAuth(false)};
+  const handleLogout=()=>{lsSet('km_cur',null);setUser(null);setTab('home')};
 
   const doSearch=()=>{
-    if(!searchInput.trim())return;
-    setSearchQ(searchInput.trim());
-    setPrevTab(tab);
-    setTab('search');
+    const q=searchInput.trim();
+    if(!q)return;
+    setSearchQ(q);setPrevTab(tab);setTab('search');
   };
 
   const navClick=(t)=>{
@@ -591,9 +751,16 @@ function App(){
     setSelectedMovie(null);setTab(t);
   };
 
+  if(!db)return(
+    <div>
+      <div className="header"><div className="logo">КИНОМАНИЯ</div></div>
+      <div className="nav">{['ГЛАВНАЯ','ФИЛЬМЫ','СЕРИАЛЫ','ИНФО'].map(l=><div key={l}className="nav-item">{l}</div>)}</div>
+      <div className="loading">ЗАГРУЗКА</div>
+    </div>
+  );
+
   return(
     <div>
-      {/* HEADER */}
       <div className="header">
         <div className="logo"onClick={()=>navClick('home')}>КИНОМАНИЯ</div>
         <div className="header-right">
@@ -602,47 +769,47 @@ function App(){
             <input placeholder="Поиск..."value={searchInput}
               onChange={e=>setSearchInput(e.target.value)}
               onKeyDown={e=>e.key==='Enter'&&doSearch()}/>
-            {searchInput&&<button className="search-clear"onClick={()=>{setSearchInput('');if(tab==='search')setTab(prevTab)}}>×</button>}
+            {searchInput&&<button className="search-clear"
+              onClick={()=>{setSearchInput('');if(tab==='search')setTab(prevTab)}}>×</button>}
           </div>
           <div className="avatar-btn"onClick={()=>user?navClick('profile'):setShowAuth(true)}>
-            {user?<span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:14}}>{user.name[0].toUpperCase()}</span>:'👤'}
+            {user
+              ?<span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:15}}>{user.name[0].toUpperCase()}</span>
+              :'👤'}
           </div>
         </div>
       </div>
 
-      {/* NAV */}
       <div className="nav">
         {[['home','ГЛАВНАЯ'],['movies','ФИЛЬМЫ'],['series','СЕРИАЛЫ'],['info','ИНФО']].map(([t,l])=>(
-          <div key={t}className={`nav-item${tab===t?' active':''}`}onClick={()=>navClick(t)}>{l}</div>
+          <div key={t}className={`nav-item${(tab===t||(!['home','movies','series','info'].includes(tab)&&t==='home'&&tab==='home'))?' active':''}`}
+            style={{borderBottom:tab===t?'3px solid #fff':'3px solid transparent'}}
+            onClick={()=>navClick(t)}>{l}</div>
         ))}
       </div>
 
-      {/* CONTENT */}
-      {tab==='home'&&<HomePage onMovie={goMovie}/>}
-      {tab==='movies'&&<ListPage type="movie"onMovie={goMovie}/>}
-      {tab==='series'&&<ListPage type="series"onMovie={goMovie}/>}
+      {tab==='home'&&<HomePage movies={movies}onMovie={goMovie}/>}
+      {tab==='movies'&&<ListPage type="movie"movies={movies}onMovie={goMovie}/>}
+      {tab==='series'&&<ListPage type="series"movies={movies}onMovie={goMovie}/>}
       {tab==='info'&&<InfoPage/>}
-      {tab==='profile'&&user&&<ProfilePage user={user}onLogout={handleLogout}favs={favs}onMovie={goMovie}/>}
-      {tab==='search'&&<SearchResults query={searchQ}onMovie={goMovie}/>}
-      {tab==='detail'&&selectedMovie&&(
-        <MovieDetail movie={selectedMovie}user={user}onBack={goBack}
-          favs={favs}toggleFav={toggleFav}onAuthNeeded={()=>setShowAuth(true)}/>
-      )}
+      {tab==='profile'&&user&&<ProfilePage user={user}movies={movies}onLogout={handleLogout}
+        favs={favs}onMovie={goMovie}onAdmin={()=>setTab('admin')}/>}
+      {tab==='admin'&&<AdminPanel db={db}onDBChange={setDB}onBack={()=>setTab('profile')}/>}
+      {tab==='search'&&<SearchResults query={searchQ}movies={movies}onMovie={goMovie}/>}
+      {tab==='detail'&&selectedMovie&&<MovieDetail movie={selectedMovie}user={user}
+        onBack={goBack}favs={favs}toggleFav={toggleFav}onAuthNeeded={()=>setShowAuth(true)}/>}
 
-      {/* FOOTER */}
       <div className="footer">
         <div className="footer-social">
           НАШИ СОЦСЕТИ:
-          <div className="social-icon"style={{background:'#000',border:'2px solid #333'}}>🎵</div>
-          <div className="social-icon"style={{background:'#5865F2'}}>💬</div>
-          <div className="social-icon"style={{background:'#0088cc'}}>✈️</div>
-          <div className="social-icon"style={{background:'#FF0000'}}>▶</div>
+          {[['🎵','#000'],['💬','#5865F2'],['✈️','#0088cc'],['▶','#FF0000']].map(([i,c],idx)=>(
+            <div key={idx}className="social-icon"style={{background:c,border:'1px solid #333'}}>{i}</div>
+          ))}
         </div>
         <div className="footer-contact">КОНТАКТЫ</div>
         <div className="footer-copy">© 2026 КИНОМАНИЯ</div>
       </div>
 
-      {/* AUTH MODAL */}
       {showAuth&&<AuthModal onClose={()=>setShowAuth(false)}onAuth={handleAuth}/>}
     </div>
   );
