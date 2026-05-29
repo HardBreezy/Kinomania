@@ -543,7 +543,7 @@ function HomePage({movies,onMovie}){
         </div>
         <div>
           <div className="section-title"style={{textAlign:'right'}}>БЛИЖАЙШИЕ РЕЛИЗЫ</div>
-          <div className="release-month">МАРТ</div>
+          <div className="release-month">ИЮНЬ</div>
           <div className="release-row">
             {march.map((m,i)=>(
               <div className="movie-thumb release-item"key={m.id}onClick={()=>onMovie(m)}>
@@ -553,7 +553,7 @@ function HomePage({movies,onMovie}){
               </div>
             ))}
           </div>
-          <div className="release-month">АПРЕЛЬ</div>
+          <div className="release-month">ИЮЛЬ</div>
           <div className="release-row">
             {april.map((m,i)=>(
               <div className="movie-thumb release-item"key={m.id}onClick={()=>onMovie(m)}>
@@ -765,7 +765,7 @@ function App(){
         <div className="logo"onClick={()=>navClick('home')}>КИНОМАНИЯ</div>
         <div className="header-right">
           <div className="search-wrap">
-            <button className="search-icon"onClick={doSearch}>🔍</button>
+            <button className="search-icon"onClick={doSearch}></button>
             <input placeholder="Поиск..."value={searchInput}
               onChange={e=>setSearchInput(e.target.value)}
               onKeyDown={e=>e.key==='Enter'&&doSearch()}/>
